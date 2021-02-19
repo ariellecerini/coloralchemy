@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<head>
+    <script src="scripts/lodash.js"></script>
+
+</head>
+<style>
+
+form{
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: black solid 5px;
+    padding: 5%;
+}
+
+.colRend{
+    width: 100px; 
+    height: 100px;
+}
+
+</style>
+</head>
+
+<body>
+<div id="container">
+        <label for="blendmode">Select Blendmode Type</label>
+        <select id="blendmode" name="blendmode">
+        <option value="multiply">Multiply</option>
+      </select><br>
+          <label for="direction">Deductive or Inductive</label> 
+           <input type="radio" id="deductive" name="direction" value="2">
+        <label for="deductive">Deductive</label>
+        <input type="radio" id="inductive" name="direction" value="1" checked="checked">
+        <label for="inductive">Inductive</label><br>
+        <label for="color1">Color 1:</label><br>
+        <input type="text" id="color1" name="color1" value=""><br>
+        <label for="color2">Color 2:</label><br>
+        <input type="text" id="color2" name="color2" value=""><br><br>
+        <label for="color2">Color 3:</label><br>
+        <input type="text" id="color3" name="color3" value=""><br><br>
+       <button value="Submit" onClick="formSubmit()"> submit</button>
+</div>
+<div id="squareGen" class="colRend" ></div>
+<div id="square1" class="colRend" ></div>
+<div id="square2" class="colRend" ></div>
+
+
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script src="alch.js"></script>
+
+</body>
+</html>

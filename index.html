@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta name="viewport" content="width=600,initial-scale=0.5,maximum-scale=0.5">
+<!--adaptation of color blendy https://colorblendy.com/ to allow for deductive color generation-->
+<title>ColorAlchemist</title>
+<link rel="icon" type="image/png" href="icon.png" />
+<link href="all.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://use.typekit.net/epf2kbu.css">
+<style>
+ input[type="radio"]{  
+    width: 20px;
+    outline: none;
+    /* padding: 0; */
+    min-width: fit-content;
+    padding-left: 30px;
+    margin-top: 0; 
+}
+
+h1{
+ font-family: program, sans-serif;
+font-weight: 500;
+font-size: 1.4em;
+font-style: normal;
+}
+
+body{
+    font-family: program, sans-serif;
+    font-weight: 300;
+    font-size: 1.0em;
+    font-style: normal;
+    text-align: left;
+}
+
+table.maindata{
+    padding: 5%;
+    background: #ffffffa6;
+    border: white solid 3px;
+    margin: auto;
+    border-radius: 7px;
+    margin-top: 10%;
+
+}
+
+.settings{
+    position: absolute;
+    bottom: 10px;
+    padding: auto;
+    margin: auto;
+    right: 20px;
+    /* background: white; */
+}
+
+
+button{
+    width: 60%;
+    margin: auto;
+    margin-top: 4%;
+    padding: 2%;
+    border: 3px solid white;
+    border-radius: 4px;
+    font-family: 'program';
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1.2em;
+    color: black;
+}
+}
+
+td{
+    vertical-align: text-top; 
+    padding-bottom: 3%;
+}
+tr{
+    vertical-align: text-top; 
+    padding-bottom: 3%;
+    margin-top: 10px; 
+
+}
+</style>
+
+</head>
+<body>    
+<div id="container">
+<!-- <form> -->
+<div class="form">
+<div id="color-bottom-preview" class="preview">
+<h1>ColorAlchemy</h1>
+<div style="float: left; width: 50%; margin: 50px 0 0 0;">
+<p><input type="text" id="color-bottom" value="#aabbcc" tabindex="1" onchange="changeColor(id, value)" spellcheck="false" /></p>
+<div class="color-picker" style="display: none;"><canvas class="picker" width="208px" height="208px"></canvas><canvas class="spectrum" width="208px" height="25px"></canvas></div>
+</div>
+<div id="color-blended-preview" class="preview" >
+<p>
+    <input type="text" id="color-blended" value="#222529" tabindex="3"  onchange="changeColor(id, value)" readonly="true"/></p>
+    <div class="color-picker" style="display: none;"><canvas class="picker" width="208px" height="208px"></canvas><canvas class="spectrum" width="208px" height="25px"></canvas></div>
+      
+
+
+</div>
+</div>
+<div id="color-top-preview" class="preview">
+    <div class="color-picker" style="display: none;"><canvas class="picker" width="208px" height="208px"></canvas><canvas class="spectrum" width="208px" height="25px"></canvas></div>
+<p><input type="text" id="color-top" value="#333333" tabindex="2" onchange="changeColor(id, value)" spellcheck="false" /></p>
+</div>
+<input type="submit" style="visibility: hidden;" />
+</div>
+<div class="settings"> <table  class="maindata">
+    <tr>
+        <td> 
+         <label for="blendmode">Select Blendmode Type</label>
+        </td>
+        <td>
+         <select id="blendmode" name="blendmode">
+             <option value="1">Multiply</option>
+             <option value="2">Screen</option>
+             <option value="3">Overlay</option>
+             <option value="4">Dodge</option>
+             <option value="5">Burn</option>
+             <option value="6">Negate</option>
+
+
+
+
+
+           </select>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" id="squared" style="margin-bottom: 20px;" name="squared" dvalue="1">
+        </td>
+        <td>
+        <label for="squared">Same color multiply</label>
+        </td>    
+    </tr>
+    <tr><td><label for="direction">Deductive or Inductive</label> </td>
+     <td>
+         <table>
+             <tr>
+                 <td><input type="radio" id="deductive" name="direction" value="2" onchange="setUpdate()">
+                 </td>
+                 <td>
+                 <label for="deductive">Deductive</label>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                     <input type="radio" id="inductive" name="direction" value="1" checked="checked">
+                 </td>
+                 <td>
+                     <label for="inductive">Inductive</label><br> </tr>
+                 </td>
+             </tr>
+
+             
+         </table>
+     </td>
+     
+ </tr>
+</table>
+<button value="Submit" onClick="formSubmit()"> submit</button>
+
+</div>
+
+<!-- </form> -->
+</div>
+<script src="scripts/jquery-1.6.2.min.js"></script>
+<script src="alch.js"></script>
+<script>
+function changeColor(id, h) {
+    // var h = this.value; 
+    document.getElementById(id + "-preview").setAttribute("style", "background-color: " + h);
+    formSubmit();
+}
+
+
+
+</script>
+
+</body>
+</html>
